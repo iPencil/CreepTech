@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "creeptech:default_wip"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}
