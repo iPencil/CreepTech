@@ -1,0 +1,16 @@
+[
+{
+  "modid": "creeptech",
+  "name": "Creep Tech",
+  "description": "Tech mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["CreeperShift"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
