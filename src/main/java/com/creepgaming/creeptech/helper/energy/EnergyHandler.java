@@ -9,29 +9,31 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EnergyHandler {
-	
-	
-	public static void handleSendEnergy(BlockPos pos, World world, int rf){
-		
-		for(EnumFacing facing : EnumFacing.values()){
-			
+
+	/*
+	 * Handles sending of Energy
+	 * 
+	 */
+
+	public static void handleSendEnergy(BlockPos pos, World world, int rf) {
+
+		for (EnumFacing facing : EnumFacing.values()) {
+
 			EnumFacing opposite = facing.getOpposite();
 			BlockPos offset = pos.offset(facing);
 			TileEntity te = world.getTileEntity(offset);
-			if(te instanceof IEnergyHandler && te instanceof IEnergyConnection){
-				
-				IEnergyConnection connection = (IEnergyConnection)te;
-				if (connection.canConnectEnergy(opposite) && te instanceof IEnergyReceiver){
-					
-					((IEnergyReceiver)te).receiveEnergy(opposite, rf, false);
+			if (te instanceof IEnergyHandler && te instanceof IEnergyConnection) {
+
+				IEnergyConnection connection = (IEnergyConnection) te;
+				if (connection.canConnectEnergy(opposite) && te instanceof IEnergyReceiver) {
+
+					((IEnergyReceiver) te).receiveEnergy(opposite, rf, false);
 				}
-				
-				
+
 			}
-			
-			
+
 		}
-		
+
 	}
 
 }
