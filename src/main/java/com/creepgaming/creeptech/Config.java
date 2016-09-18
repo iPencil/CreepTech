@@ -12,6 +12,7 @@ public class Config {
 	private static String CATEGORY_GENERATOR = "generators";
 
 	public static int windGeneratorRF = 5;
+	public static int windGeneratorRainRF = 6;
 
 	public static void readConfig() {
 		Configuration cfg = CommonProxy.config;
@@ -34,7 +35,8 @@ public class Config {
 
 	private static void initGeneratorConfig(Configuration cfg){
 		cfg.addCustomCategoryComment(CATEGORY_GENERATOR, "Generator Configuration");
-		windGeneratorRF = cfg.getInt("", CATEGORY_GENERATOR, 5, 1, 1000, "Wind Generator RF/t");
+		windGeneratorRF = cfg.getInt("wind_rf", CATEGORY_GENERATOR, 5, 1, 1000, "Wind Generator RF/t");
+		windGeneratorRainRF = cfg.getInt("wind_rf_rain", CATEGORY_GENERATOR, 6, 1, 1000, "Wind Generator RF/t during rain");
 	}
 	
 }

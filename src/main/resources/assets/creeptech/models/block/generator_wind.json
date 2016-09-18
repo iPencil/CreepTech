@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "creeptech:blocks/block_generator_front",
+    "down": "creeptech:blocks/block_machine_sides",
+    "up": "creeptech:blocks/block_machine_sides",
+    "east": "creeptech:blocks/block_machine_sides",
+    "west": "creeptech:blocks/block_machine_sides",
+    "north": "creeptech:blocks/block_generator_front",
+    "south": "creeptech:blocks/block_machine_sides"
+  }
+}

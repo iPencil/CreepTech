@@ -1,6 +1,6 @@
 package com.creepgaming.creeptech.block;
 
-import com.creepgaming.creeptech.block.generator.BlockWindGenerator;
+import com.creepgaming.creeptech.block.windgenerator.BlockWindGenerator;
 
 import net.minecraft.block.Block;
 
