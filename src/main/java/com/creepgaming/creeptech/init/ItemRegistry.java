@@ -1,4 +1,4 @@
-package com.creepgaming.creeptech.item;
+package com.creepgaming.creeptech.init;
 
 public class ItemRegistry {
 

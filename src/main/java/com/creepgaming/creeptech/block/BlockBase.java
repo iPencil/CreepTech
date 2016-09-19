@@ -1,4 +1,4 @@
-package com.creepgaming.creeptech.init;
+package com.creepgaming.creeptech.block;
 
 import com.creepgaming.creeptech.CreepTech;
 

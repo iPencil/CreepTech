@@ -4,8 +4,8 @@ import java.io.File;
 
 import com.creepgaming.creeptech.Config;
 import com.creepgaming.creeptech.init.BlockRegistry;
+import com.creepgaming.creeptech.init.ItemRegistry;
 import com.creepgaming.creeptech.init.TileEntityRegistry;
-import com.creepgaming.creeptech.item.ItemRegistry;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;

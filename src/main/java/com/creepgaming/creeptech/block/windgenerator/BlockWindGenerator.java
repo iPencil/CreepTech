@@ -1,8 +1,8 @@
 package com.creepgaming.creeptech.block.windgenerator;
 
 import com.creepgaming.creeptech.Reference;
+import com.creepgaming.creeptech.block.BlockBase;
 import com.creepgaming.creeptech.helper.block.BlockHelper;
-import com.creepgaming.creeptech.init.BlockBase;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
