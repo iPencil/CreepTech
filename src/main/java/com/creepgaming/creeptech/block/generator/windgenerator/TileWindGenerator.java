@@ -1,4 +1,4 @@
-package com.creepgaming.creeptech.block.windgenerator;
+package com.creepgaming.creeptech.block.generator.windgenerator;
 
 import com.creepgaming.creeptech.Config;
 import com.creepgaming.creeptech.helper.energy.EnergyHandler;

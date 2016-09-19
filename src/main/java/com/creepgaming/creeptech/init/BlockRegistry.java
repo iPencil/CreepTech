@@ -1,7 +1,7 @@
 package com.creepgaming.creeptech.init;
 
-import com.creepgaming.creeptech.block.debug.BlockDebug;
-import com.creepgaming.creeptech.block.windgenerator.BlockWindGenerator;
+import com.creepgaming.creeptech.block.generator.windgenerator.BlockWindGenerator;
+import com.creepgaming.creeptech.block.storage.debug.BlockDebug;
 
 import net.minecraft.block.Block;
 

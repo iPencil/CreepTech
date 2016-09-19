@@ -1,4 +1,4 @@
-package com.creepgaming.creeptech.block.debug;
+package com.creepgaming.creeptech.block.storage.debug;
 
 import com.creepgaming.creeptech.Reference;
 import com.creepgaming.creeptech.block.BlockBase;

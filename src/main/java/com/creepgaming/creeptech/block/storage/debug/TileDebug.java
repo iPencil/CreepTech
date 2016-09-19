@@ -1,4 +1,4 @@
-package com.creepgaming.creeptech.block.debug;
+package com.creepgaming.creeptech.block.storage.debug;
 
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;

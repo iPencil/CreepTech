@@ -1,4 +1,4 @@
-package com.creepgaming.creeptech.block.windgenerator;
+package com.creepgaming.creeptech.block.generator.windgenerator;
 
 import com.creepgaming.creeptech.Reference;
 import com.creepgaming.creeptech.block.BlockBase;
