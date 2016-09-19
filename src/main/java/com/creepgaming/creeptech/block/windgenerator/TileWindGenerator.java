@@ -12,12 +12,12 @@ public class TileWindGenerator extends TileEntity implements IEnergyProvider, IE
 
 	@Override
 	public int getEnergyStored(EnumFacing from) {
-		return 5;
+		return 0;
 	}
 
 	@Override
 	public int getMaxEnergyStored(EnumFacing from) {
-		return 5;
+		return 0;
 	}
 
 	@Override
@@ -27,22 +27,36 @@ public class TileWindGenerator extends TileEntity implements IEnergyProvider, IE
 
 	@Override
 	public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) {
-		
-	
 
-		return 5;
-		
+		if (!worldObj.isRemote && this.getPos().getY() > 63
+				&& worldObj.canSeeSky(this.getPos().offset(EnumFacing.UP))) {
+
+			if (worldObj.isRainingAt(this.getPos())) {
+				return Config.windGeneratorRainRF;
+			} else {
+				return Config.windGeneratorRF;
+			}
+
+		}
+		return 0;
 	}
 
 	@Override
 	public void update() {
 
-		if (!worldObj.isRemote && this.getPos().getY() > 63 && worldObj.canSeeSky(this.getPos().offset(EnumFacing.UP))) {
+		/*
+		 * TODO Raining doesn't seem to change rf value
+		 * 
+		 * 
+		 */
 
-			if (worldObj.isRainingAt(this.getPos())){
-			EnergyHandler.handleSendEnergy(this.getPos(), this.worldObj, Config.windGeneratorRainRF);
-			}else{
-			EnergyHandler.handleSendEnergy(this.getPos(), this.worldObj, Config.windGeneratorRF);	
+		if (!worldObj.isRemote && this.getPos().getY() > 63
+				&& worldObj.canSeeSky(this.getPos().offset(EnumFacing.UP))) {
+
+			if (worldObj.isRainingAt(this.getPos())) {
+				EnergyHandler.handleSendEnergy(this.getPos(), this.worldObj, Config.windGeneratorRainRF);
+			} else {
+				EnergyHandler.handleSendEnergy(this.getPos(), this.worldObj, Config.windGeneratorRF);
 			}
 
 		}

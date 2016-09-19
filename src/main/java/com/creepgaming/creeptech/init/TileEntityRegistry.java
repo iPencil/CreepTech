@@ -1,5 +1,6 @@
-package com.creepgaming.creeptech.tileentity;
+package com.creepgaming.creeptech.init;
 
+import com.creepgaming.creeptech.block.debug.TileDebug;
 import com.creepgaming.creeptech.block.windgenerator.TileWindGenerator;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;

@@ -1,7 +1,7 @@
-package com.creepgaming.creeptech.block;
+package com.creepgaming.creeptech.block.debug;
 
 import com.creepgaming.creeptech.Reference;
-import com.creepgaming.creeptech.tileentity.TileDebug;
+import com.creepgaming.creeptech.init.BlockBase;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

@@ -1,8 +1,8 @@
 package com.creepgaming.creeptech.block.windgenerator;
 
 import com.creepgaming.creeptech.Reference;
-import com.creepgaming.creeptech.block.BlockBase;
 import com.creepgaming.creeptech.helper.block.BlockHelper;
+import com.creepgaming.creeptech.init.BlockBase;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -20,6 +20,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockWindGenerator extends BlockBase implements ITileEntityProvider {
 
+	/*
+	 * Wind Generator
+	 * Tier 1 Passive Energy Producer
+	 * TODO Basic RF/T GUI
+	 */
+	
+	
 	public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
 	public BlockWindGenerator() {

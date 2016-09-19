@@ -3,9 +3,9 @@ package com.creepgaming.creeptech.proxy;
 import java.io.File;
 
 import com.creepgaming.creeptech.Config;
-import com.creepgaming.creeptech.block.BlockRegistry;
+import com.creepgaming.creeptech.init.BlockRegistry;
+import com.creepgaming.creeptech.init.TileEntityRegistry;
 import com.creepgaming.creeptech.item.ItemRegistry;
-import com.creepgaming.creeptech.tileentity.TileEntityRegistry;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
