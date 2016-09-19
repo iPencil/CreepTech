@@ -34,6 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockEnergyStorage extends BlockBase implements ITileEntityProvider, WailaInfoProvider, TOPInfoProvider {
 
 	public static int rfStored;
+	private static long lastTime;
 
 	public BlockEnergyStorage() {
 
@@ -60,7 +61,10 @@ public class BlockEnergyStorage extends BlockBase implements ITileEntityProvider
 			IWailaConfigHandler config) {
 		TileEntity te = accessor.getTileEntity();
 		if (te instanceof TileEnergyStorage) {
+	           if (System.currentTimeMillis() - lastTime > 250) {
+	                lastTime = System.currentTimeMillis();
 			PacketRegistry.INSTANCE.sendToServer(new PacketEnergyStored(accessor.getPosition()));
+	           }
 			String rfToolTip = NumberFormat.getIntegerInstance().format(rfStored);
 			currenttip.add(TextFormatting.GRAY + "Energy: " + rfToolTip + "RF");
 

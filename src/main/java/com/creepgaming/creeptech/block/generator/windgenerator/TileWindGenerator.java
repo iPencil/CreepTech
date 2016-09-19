@@ -31,7 +31,7 @@ public class TileWindGenerator extends TileEntity implements IEnergyProvider, IE
 		if (!worldObj.isRemote && this.getPos().getY() > 63
 				&& worldObj.canSeeSky(this.getPos().offset(EnumFacing.UP))) {
 
-			if (worldObj.isRainingAt(this.getPos())) {
+			if (worldObj.isRainingAt(this.getPos().offset(EnumFacing.UP))) {
 				return Config.windGeneratorRainRF;
 			} else {
 				return Config.windGeneratorRF;
@@ -44,16 +44,10 @@ public class TileWindGenerator extends TileEntity implements IEnergyProvider, IE
 	@Override
 	public void update() {
 
-		/*
-		 * TODO Raining doesn't seem to change rf value
-		 * 
-		 * 
-		 */
-
 		if (!worldObj.isRemote && this.getPos().getY() > 63
 				&& worldObj.canSeeSky(this.getPos().offset(EnumFacing.UP))) {
 
-			if (worldObj.isRainingAt(this.getPos())) {
+			if (worldObj.isRainingAt(this.getPos().offset(EnumFacing.UP))) {
 				EnergyHandler.handleSendEnergy(this.getPos(), this.worldObj, Config.windGeneratorRainRF);
 			} else {
 				EnergyHandler.handleSendEnergy(this.getPos(), this.worldObj, Config.windGeneratorRF);
