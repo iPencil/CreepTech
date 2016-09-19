@@ -29,8 +29,20 @@ compileJava {
     sourceCompatibility = targetCompatibility = "1.6"
 }
 
+repositories {
+    maven { // The repo from which to get waila
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
+    }
+    maven { // TOP
+        name 'tterrag maven'
+        url "http://maven.tterrag.com/"
+    }
+}
+
+
 minecraft {
-    version = "1.10.2-12.18.1.2089"
+    version = "1.10.2-12.18.1.2092"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.
@@ -63,6 +75,9 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+	
+	    deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
+    deobfCompile "mcjty.theoneprobe:TheOneProbe:1.9.4-1.0.2-8"
 
 }
 

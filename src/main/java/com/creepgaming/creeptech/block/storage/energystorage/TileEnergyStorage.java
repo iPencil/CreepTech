@@ -1,4 +1,4 @@
-package com.creepgaming.creeptech.block.storage.debug;
+package com.creepgaming.creeptech.block.storage.energystorage;
 
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
@@ -10,7 +10,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.text.TextComponentString;
 
-public class TileDebug extends TileEntity implements IEnergyReceiver, IEnergyProvider, IEnergyHandler{
+public class TileEnergyStorage extends TileEntity implements IEnergyReceiver, IEnergyProvider, IEnergyHandler{
 
 	
 	protected EnergyStorage storage = new EnergyStorage(32000);
@@ -72,6 +72,16 @@ public class TileDebug extends TileEntity implements IEnergyReceiver, IEnergyPro
 		
 		player.addChatMessage(new TextComponentString("Energy: " + energy + "RF"));
 		}
+	}
+	
+	public int showStoredEnergy(){
+		
+		return storage.getEnergyStored();
+	}
+	
+	public int showMaxEnergy(){
+		return storage.getMaxEnergyStored();
+		
 	}
 	
 	

@@ -1,2 +1,3 @@
-item.itemgps.name=GPS Locator
-item.itemcompass.name=Survival Compass
+tile.creeptech:blockWindGenerator.name=Wind Turbine
+tile.creeptech:blockTank.name=Fluid Tank
+tile.creeptech:blockEnergyStorage.name=Energy Bank
