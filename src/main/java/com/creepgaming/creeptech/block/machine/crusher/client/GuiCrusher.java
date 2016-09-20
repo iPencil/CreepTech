@@ -8,10 +8,13 @@ import com.creepgaming.creeptech.Reference;
 import com.creepgaming.creeptech.block.machine.crusher.ContainerCrusher;
 import com.creepgaming.creeptech.block.machine.crusher.TileCrusher;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,6 +25,11 @@ public class GuiCrusher extends GuiContainer {
 
 	// This is the resource location for the background image
 	private static final ResourceLocation texture = new ResourceLocation(Reference.MODID, "textures/gui/machine/guicrusher.png");
+	
+	
+	private static final ResourceLocation waterTexture = new ResourceLocation("minecraft:textures/blocks/"+"water_still.png");
+			
+			
 	private TileCrusher tileEntity;
 
 	public GuiCrusher(InventoryPlayer invPlayer, TileCrusher tileCrusher) {
@@ -42,10 +50,22 @@ public class GuiCrusher extends GuiContainer {
 	final int COOK_BAR_WIDTH = 26;
 	final int COOK_BAR_HEIGHT = 17;
 
+	final int TANK_INPUT_EMPTY_POS_X = 75;
+	final int TANK_INPUT_EMPTY_POS_Y = 7;
+	final int TANK_OUTPUT_EMPTY_POS_X = 115;
+	final int TANK_OUTPUT_EMPTY_POS_Y = 30;
+	final int TANK_EMPTY_ICON_X = 202;
+	final int TANK_EMPTY_ICON_Y = 0;
+	final int TANK_EMPTY_WIDTH = 17;
+	final int TANK_EMPTY_HEIGHT = 26;
+
+	
 
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int x, int y) {
+		Minecraft.getMinecraft().getTextureManager().bindTexture(waterTexture);
+		drawTexturedModalRect(guiLeft +TANK_INPUT_EMPTY_POS_X, guiTop +TANK_INPUT_EMPTY_POS_Y, 0, 0, 32, 32);
 		// Bind the image texture
 		Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
 		// Draw the image
@@ -57,6 +77,9 @@ public class GuiCrusher extends GuiContainer {
 		// draw the cook progress bar
 		drawTexturedModalRect(guiLeft + COOK_BAR_XPOS, guiTop + COOK_BAR_YPOS, COOK_BAR_ICON_U, COOK_BAR_ICON_V,
 						              (int)(cookProgress * COOK_BAR_WIDTH), COOK_BAR_HEIGHT);
+		
+		//drawTexturedModalRect(guiLeft +TANK_INPUT_EMPTY_POS_X, guiTop +TANK_INPUT_EMPTY_POS_Y, TANK_EMPTY_ICON_X, TANK_EMPTY_ICON_Y, TANK_EMPTY_WIDTH, TANK_EMPTY_HEIGHT);
+		drawTexturedModalRect(guiLeft +TANK_OUTPUT_EMPTY_POS_X, guiTop +TANK_OUTPUT_EMPTY_POS_Y, TANK_EMPTY_ICON_X, TANK_EMPTY_ICON_Y, TANK_EMPTY_WIDTH, TANK_EMPTY_HEIGHT);
 
 	}
 
@@ -75,6 +98,9 @@ public class GuiCrusher extends GuiContainer {
 			hoveringText.add("Progress:");
 			int cookPercentage =(int)(tileEntity.fractionOfCookTimeComplete() * 100);
 			hoveringText.add(cookPercentage + "%");
+		}
+		if (isInRect(guiLeft + TANK_INPUT_EMPTY_POS_X, guiTop + TANK_INPUT_EMPTY_POS_Y, TANK_EMPTY_WIDTH, TANK_EMPTY_HEIGHT, mouseX, mouseY)){
+			hoveringText.add("Water: 1000mb");
 		}
 		
 		this.drawHoveringText(hoveringText,  mouseX-guiLeft , mouseY - guiTop);
