@@ -1,3 +1,4 @@
 tile.creeptech:blockWindGenerator.name=Wind Turbine
 tile.creeptech:blockTank.name=Fluid Tank
 tile.creeptech:blockEnergyStorage.name=Energy Bank
+container.inventorycrusher.name=Crusher
