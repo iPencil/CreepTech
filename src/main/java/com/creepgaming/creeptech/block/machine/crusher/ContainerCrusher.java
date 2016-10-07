@@ -7,6 +7,8 @@ import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerCrusher extends Container {
 
@@ -99,6 +101,8 @@ public class ContainerCrusher extends Container {
 					return null;
 				}
 		}
+		
+		//TODO repair shift clicking from crusher to inventory
 
 		// If stack size == 0 (the entire stack was moved) set slot contents to null
 		if (sourceStack.stackSize == 0) {
@@ -140,6 +144,14 @@ public class ContainerCrusher extends Container {
 		}
 	}
 
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void updateProgressBar(int id, int data) {
+		tileCrusher.setField(id, data);
+	}
+	
+	
 	// SlotSmeltableInput is a slot for input items
 	public class SlotCrushableInput extends Slot {
 		public SlotCrushableInput(IInventory inventoryIn, int index, int xPosition, int yPosition) {

@@ -13,6 +13,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -22,6 +23,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -50,8 +52,32 @@ public class BlockCrusher extends BlockContainer implements ITileEntityProvider{
 			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
     	
     	if(!worldIn.isRemote){
-    		playerIn.openGui(CreepTech.instance, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
+    		
+    		if (heldItem != null && heldItem.getItem() == Items.WATER_BUCKET){
+    			
+    	
+    		TileEntity tile = worldIn.getTileEntity(pos);
+    		
+    		if (tile instanceof TileCrusher){
+    			
+    			
+    			
+    		
+    				
+    				((TileCrusher)tile).addWater();
+    				
+    				
+    			
+    			
+    			
+    			}
+    		}else{
+    			
+    			playerIn.openGui(CreepTech.instance, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
+    		}
+    		
     	}
+    	
     	
 		return true;
 	}

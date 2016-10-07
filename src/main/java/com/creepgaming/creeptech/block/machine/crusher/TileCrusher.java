@@ -21,6 +21,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.fluids.Fluid;
 
 public class TileCrusher extends TileEntity implements IEnergyReceiver, IEnergyConnection, ITickable, IInventory{
 
@@ -37,9 +38,28 @@ public class TileCrusher extends TileEntity implements IEnergyReceiver, IEnergyC
 
 	/**The number of ticks the current item has been cooking*/
 	private short cookTime;
+	public short inputWater;
 	/**The number of ticks required to cook an item*/
 	private static final short COOK_TIME_FOR_COMPLETION = 200;  // vanilla value is 200 = 10 seconds
 
+	
+	public void addWater(){
+		
+		if(inputWater <= (short)11000){
+		inputWater += (short)1000;
+		markDirty();
+			
+		}
+		
+		
+	}
+	
+	
+	public double fractionOfInputWater()
+	{
+		double fraction = inputWater / 12000D;
+		return MathHelper.clamp_double(fraction, 0.0, 1.0);
+	}
 	
 	public double fractionOfCookTimeComplete()
 	{
@@ -51,9 +71,9 @@ public class TileCrusher extends TileEntity implements IEnergyReceiver, IEnergyC
 	@Override
 	public void update() {
 		// If there is nothing to smelt or there is no room in the output, reset cookTime and return
-		if (canCrush()) {
-				cookTime+= 10;
-
+		if (canCrush() && inputWater >= 5) {
+				cookTime+= 1;
+				inputWater-=5;
 
 			// If cookTime has reached maxCookTime smelt the item and reset cookTime
 			if (cookTime >= COOK_TIME_FOR_COMPLETION) {
@@ -61,9 +81,9 @@ public class TileCrusher extends TileEntity implements IEnergyReceiver, IEnergyC
 				cookTime = 0;
 			}
 		}	else {
-			cookTime = 0;
 		}
-
+		
+	
 
 	}
 	
@@ -225,6 +245,7 @@ public class TileCrusher extends TileEntity implements IEnergyReceiver, IEnergyC
 
 			// Save everything else
 			parentNBTTagCompound.setShort("CookTime", cookTime);
+			parentNBTTagCompound.setShort("InputWater", inputWater);
 	    return parentNBTTagCompound;
 		}
 
@@ -247,6 +268,7 @@ public class TileCrusher extends TileEntity implements IEnergyReceiver, IEnergyC
 
 			// Load everything else.  Trim the arrays (or pad with 0) to make sure they have the correct number of elements
 			cookTime = nbtTagCompound.getShort("CookTime");
+			inputWater = nbtTagCompound.getShort("InputWater");
 		}
 	
 	
@@ -380,21 +402,24 @@ public class TileCrusher extends TileEntity implements IEnergyReceiver, IEnergyC
 	}
 
 	private static final byte COOK_FIELD_ID = 0;
-	private static final byte NUMBER_OF_FIELDS = 1;
+	private static final byte INPUT_WATER_ID = 1;
+	private static final byte NUMBER_OF_FIELDS = (byte)2;
 	
 
 	@Override
 	public int getField(int id) {
 		if (id == COOK_FIELD_ID) return cookTime;
+		if (id == INPUT_WATER_ID) return inputWater;
 		return 0;
 	}
 
 
 	@Override
 	public void setField(int id, int value) {
-		if (id == COOK_FIELD_ID) {
+		if (id == COOK_FIELD_ID){
 			cookTime = (short)value;
-		}
+		}else if(id == INPUT_WATER_ID)inputWater = (short)value;
+		
 	}
 
 
